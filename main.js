@@ -1,6 +1,7 @@
 import Globe from 'globe.gl';
 import data from './data.js';
 import Canvg from 'canvg';
+import { fabric } from 'fabric';
 
 const world = Globe({
 	antialias: true,
@@ -16,22 +17,18 @@ const world = Globe({
 	.arcDashLength(() => Math.random())
 	.arcDashGap(() => Math.random())
 	.arcDashAnimateTime(() => Math.random() * 4000 + 500)
+	.arcsTransitionDuration(1000)
+	// .arcDashAnimateTime(() => Math.random() * 4000 + 500)
 	.arcStroke('stroke')(document.getElementById('app'));
 
 world.controls().autoRotate = true;
 world.controls().autoRotateSpeed = 0.9;
 
-let canvasV;
-const getSVGOnClick = async () => {
+const getSVGOnClick = () => {
 	const canvas = document.getElementsByTagName('canvas');
 	const ctx = canvas[0].getContext('webgl2');
 
-	canvasV = await Canvg.from(ctx, './img/test.svg');
+	const convertCanvas = new fabric.Rect({ canvas });
 
-	canvasV.start();
-	console.log(ctx);
+	console.log(ctx, convertCanvas.toSVG());
 };
-
-// window.onbeforeunload = () => {
-// 	canvasV.stop();
-// };

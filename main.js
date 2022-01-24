@@ -1,7 +1,6 @@
 import Globe from 'globe.gl';
 import data from './data.js';
-import Canvg from 'canvg';
-import { fabric } from 'fabric';
+// import { fabric } from 'fabric';
 
 const world = Globe({
 	antialias: true,
@@ -24,11 +23,11 @@ const world = Globe({
 world.controls().autoRotate = true;
 world.controls().autoRotateSpeed = 0.9;
 
-const getSVGOnClick = () => {
-	const canvas = document.getElementsByTagName('canvas');
-	const ctx = canvas[0].getContext('webgl2');
+// const getSVGOnClick = () => {
+// 	const canvas = document.getElementsByTagName('canvas');
+// 	const ctx = canvas[0].getContext('webgl2');
 
-	const convertCanvas = new fabric.Rect({ canvas });
+// 	const convertCanvas = new fabric.Rect({ canvas });
 
-	console.log(ctx, convertCanvas.toSVG());
-};
+// 	console.log(ctx, convertCanvas.toSVG());
+// };
